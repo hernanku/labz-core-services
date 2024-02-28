@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  nginx-core: 
+    image: nginx:1.25-alpine
+    container_name: nginx-core
+    ports:
+    - "80:80"
+    volumes:
+      - ${PWD}/lab-dns.conf:/etc/nginx/conf.d/lab-dns.conf:ro
+    restart: always
+
