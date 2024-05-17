@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: jenkins-pv
+  name: jenkins-data
   namespace: jenkins
 spec:
   storageClassName: vsphere-csi-sc
@@ -16,7 +16,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: jenkins-pvc
+  name: jenkins-data
   namespace: jenkins
 spec:
   storageClassName: vsphere-csi-sc
@@ -25,4 +25,4 @@ spec:
   resources:
     requests:
       storage: 4Gi
-  volumeName: "jenkins-pv"
+  volumeName: "jenkins-data"

@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  sonarqube:
+    image: sonarqube:10-community
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://10.95.123.28:5432/sonarqube
+      SONAR_JDBC_USERNAME: sonaruser
+      SONAR_JDBC_PASSWORD: sonar_user_password
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    ports:
+      - "9000:9000"
+volumes:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:

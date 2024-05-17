@@ -12,7 +12,7 @@ controller:
     pullPolicy: "Always"
   imagePullSecretName:
   disableRememberMe: true
-  numExecutors: 1
+  numExecutors: 0
   executorMode: "NORMAL"
   jenkinsHome: "/var/jenkins_home"
   serviceType: ClusterIP
@@ -34,9 +34,11 @@ controller:
     operator: Exists
     effect: NoSchedule
   podSecurityContextOverride:
-    runAsUser: 0
-    supplementalGroups: [0]
-    fsGroup: 0
+    # runAsUser: 0
+    # runAsNonRoot: true
+    # supplementalGroups: [0]
+    # fsGroup: 0
+    privileged: true
   ingress:
     enabled: false
     paths: 
@@ -93,5 +95,5 @@ agent:
 
 persistence:
   enabled: true
-  existingClaim: "jenkins-pvc"
+  existingClaim: "jenkins-data"
 

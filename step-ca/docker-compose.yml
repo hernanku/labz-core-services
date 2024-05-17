@@ -2,19 +2,19 @@ version: '3.8'
 
 services:
   ca:
-    image: smallstep/step-ca:0.25.3-rc5
+    image: smallstep/step-ca:0.26.1
     container_name: step-ca-server
     ports:
       - "8443:443"
       - "9000:9000"
     volumes:
-      - /app-data/step-ca:/home/step
+      - /etc/step-ca:/home/step
     restart: always
     environment:
       DOCKER_STEPCA_INIT_NAME: labzio
-      DOCKER_STEPCA_INIT_DNS_NAMES: localhost,10.23.1.39
+      DOCKER_STEPCA_INIT_DNS_NAMES: localhost,10.95.123.11,lab-ca.labz.io
       DOCKER_STEPCA_INIT_REMOTE_MANAGEMENT: "true"
       DOCKER_STEPCA_INIT_PASSWORD: "p@55w0rD"
       DOCKER_STEPCA_INIT_ACME: "acme"
-      DOCKER_STEPCA_INIT_PROVISIONER_NAME: "admin-prov"
+      DOCKER_STEPCA_INIT_PROVISIONER_NAME: "labzio-acme"
 
